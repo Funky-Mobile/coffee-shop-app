@@ -1,3 +1,4 @@
+import 'package:coffee_shop_app/core/constants/app_colors.dart';
 import 'package:coffee_shop_app/features/home_screen/views/home_screen_main.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        scaffoldBackgroundColor: Color(0xEEFFFFFF),
+        appBarTheme: AppBarTheme(
+          backgroundColor: AppColors.frothyWhite,
+        ),
+        scaffoldBackgroundColor: AppColors.frothyWhite,
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.white
         )

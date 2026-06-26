@@ -57,7 +57,7 @@ class FoodWidget extends StatelessWidget {
                     AppTexts.medium(
                       text: food.name,
                       fontSize: 14.0
-                    )
+                    ),
                   ],
                 ),
               );

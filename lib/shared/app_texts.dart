@@ -3,11 +3,11 @@ import 'package:flutter/cupertino.dart';
 
 class AppTexts {
 
-  static Text regular({required String text, Color? color}) {
+  static Text regular({required String text, Color? color, double? fontSize}) {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 20.0,
+        fontSize: fontSize ?? 20.0,
         fontWeight: FontWeight.normal,
         color: color ?? AppColors.black
       ),
