@@ -18,4 +18,12 @@ class AppStrings {
   static String get register => "REGISTER";
 
   static String get signIn => "SIGN IN";
+
+  static String get signInCapitalized => "Sign in";
+
+  static String get signInExplained => "It’s coffee time! Login and lets get all the coffee in the world! Or at least iced coffee.";
+
+  static String get doNotHaveAccount => "Don’t have an account?";
+
+  static String get createNewAccount => "CREATE NEW ACCOUNT";
 }
