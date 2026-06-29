@@ -5,7 +5,7 @@ import '../core/constants/app_colors.dart';
 
 class AppInputFields {
 
-  static Container textField({required String hint}) {
+  static Container textField({required String hint, required TextEditingController controller}) {
     return Container(
       decoration: BoxDecoration(
           boxShadow: [
@@ -19,6 +19,7 @@ class AppInputFields {
           borderRadius: BorderRadius.circular(12.0)
       ),
       child: TextFormField(
+        controller: controller,
         decoration: InputDecoration(
             hintText: hint,
             hintStyle: TextStyle(
@@ -35,7 +36,7 @@ class AppInputFields {
     );
   }
 
-  static Container passwordField({required String hint, required bool showPassword, required Function onSuffixPressed}) {
+  static Container passwordField({required String hint, required bool showPassword, required Function onSuffixPressed, required TextEditingController controller}) {
     return Container(
       decoration: BoxDecoration(
           boxShadow: [
@@ -49,6 +50,7 @@ class AppInputFields {
           borderRadius: BorderRadius.circular(12.0)
       ),
       child: TextFormField(
+        controller: controller,
         keyboardType: TextInputType.visiblePassword,
         obscureText: !showPassword,
         decoration: InputDecoration(

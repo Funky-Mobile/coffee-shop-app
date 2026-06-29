@@ -27,11 +27,11 @@ class AppTexts {
     );
   }
 
-  static Text bold({required String text, Color? color}) {
+  static Text bold({required String text, Color? color, double? fontSize}) {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 20.0,
+        fontSize: fontSize ?? 20.0,
         fontWeight: FontWeight.bold,
         color: color ?? AppColors.black
       ),

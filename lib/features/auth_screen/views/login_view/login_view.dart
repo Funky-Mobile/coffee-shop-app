@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:coffee_shop_app/features/auth_screen/views/sign_up_view/sign_up_view.dart';
+import 'package:coffee_shop_app/features/loading_splassh_screen/loading_splash_screen.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,10 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   bool _showPassword = false;
 
   @override
@@ -51,13 +57,14 @@ class _LoginViewState extends State<LoginView> {
                         ),
 
                         TextButton(
-                            onPressed: () {
-                              ///Todo: Skip process
-                            },
-                            child: AppTexts.medium(
-                                text: "Skip",
-                                fontSize: 14.0
-                            )
+                          onPressed: () {
+                            ///Todo: Skip process
+                            Navigator.pop(context);
+                          },
+                          child: AppTexts.medium(
+                            text: "Skip",
+                            fontSize: 14.0
+                          )
                         )
                       ],
                     ),
@@ -99,6 +106,9 @@ class _LoginViewState extends State<LoginView> {
                                   IconButton(
                                     onPressed: () {
                                       ///Todo: Scan face
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
+                                        return LoadingSplashScreen(isSettingFaceID: true);
+                                      }));
                                     },
                                     icon: ImageIcon(
                                       AssetImage(
@@ -122,10 +132,10 @@ class _LoginViewState extends State<LoginView> {
                           ),
 
                           const SizedBox(height: 24.0),
-                          _buildInputField(label: "Username", hint: "Enter username"),
+                          _buildInputField(label: "Username", hint: "Enter username", controller: _usernameController),
 
                           const SizedBox(height: 24.0),
-                          _buildPasswordInputField(label: "Password", hint: "Type your password"),
+                          _buildPasswordInputField(label: "Password", hint: "Type your password", controller: _passwordController),
 
                           const SizedBox(height: 32.0),
 
@@ -135,6 +145,15 @@ class _LoginViewState extends State<LoginView> {
                                 child: FilledButton(
                                   onPressed: () {
                                     ///Todo: Login User
+                                    final String username = _usernameController.text;
+                                    final String password = _passwordController.text;
+
+                                    log("Username: $username");
+                                    log("Password: $password");
+
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
+                                      return LoadingSplashScreen(isSettingFaceID: false);
+                                    }));
                                   },
                                   style: FilledButton.styleFrom(
                                       backgroundColor: AppColors.espressoBrown,
@@ -196,7 +215,10 @@ class _LoginViewState extends State<LoginView> {
                               Expanded(
                                 child: FilledButton(
                                   onPressed: () {
-                                    ///Todo: Register User
+                                    ///Todo: Navigate user to register screen
+                                    Navigator.pushReplacement(context, (MaterialPageRoute(builder: (builder) {
+                                      return SignUpView();
+                                    })));
                                   },
                                   style: FilledButton.styleFrom(
                                     backgroundColor: AppColors.espressoBrown,
@@ -231,7 +253,7 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  Widget _buildInputField({required String label, required String hint}) {
+  Widget _buildInputField({required String label, required String hint, required TextEditingController controller}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -243,12 +265,15 @@ class _LoginViewState extends State<LoginView> {
 
         const SizedBox(height: 8.0),
 
-        AppInputFields.textField(hint: hint)
+        AppInputFields.textField(
+          hint: hint,
+          controller: controller
+        )
       ],
     );
   }
 
-  Widget _buildPasswordInputField({required String label, required String hint}) {
+  Widget _buildPasswordInputField({required String label, required String hint, required TextEditingController controller}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -261,6 +286,7 @@ class _LoginViewState extends State<LoginView> {
         const SizedBox(height: 8.0),
 
         AppInputFields.passwordField(
+            controller: controller,
             hint: hint,
             showPassword: _showPassword,
             onSuffixPressed: () {

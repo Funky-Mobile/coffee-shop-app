@@ -2,6 +2,7 @@ class AppAssets {
   static String appIcon = "assets/icons/app_icon.png";
   static String cartIcon = "assets/icons/cart_icon.png";
   static String faceIdIcon = "assets/icons/face_id_symbol.png";
+  static String beansIcon = "assets/icons/beans-icon.png";
 
   /// Dummy coffee assets
   static String bakery = "assets/images/dummy_assets/Bakery.png";
