@@ -57,7 +57,6 @@ class _SignUpViewState extends State<SignUpView> {
 
                         TextButton(
                           onPressed: () {
-                            ///Todo: Skip process
                             Navigator.pop(context);
                           },
                           child: AppTexts.medium(
@@ -177,7 +176,6 @@ class _SignUpViewState extends State<SignUpView> {
                               Expanded(
                                 child: FilledButton(
                                   onPressed: () {
-                                    ///Todo: Navigate user to sign-in screen
                                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
                                       return LoginView();
                                     }));

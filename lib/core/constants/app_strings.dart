@@ -26,4 +26,8 @@ class AppStrings {
   static String get doNotHaveAccount => "Don’t have an account?";
 
   static String get createNewAccount => "CREATE NEW ACCOUNT";
+
+  static String get next => "Next";
+
+  static String get done => "Done";
 }

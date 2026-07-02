@@ -4,6 +4,15 @@ class AppAssets {
   static String faceIdIcon = "assets/icons/face_id_symbol.png";
   static String beansIcon = "assets/icons/beans-icon.png";
 
+  ///Onboarding screen icons
+  static String onboardingOneBeanIcon = "assets/icons/onboarding-1-bean-icon.png";
+  static String onboardingTwoBeanIcon = "assets/icons/onboarding-2-bean-icon.png";
+  static String onboardingThreeBeanIcon = "assets/icons/onboarding-3-bean-icon.png";
+
+  static String onboardingImageOne = "assets/images/onboarding_images/onboarding-image-1.png";
+  static String onboardingImageTwo = "assets/images/onboarding_images/onboarding-image-2.png";
+  static String onboardingImageThree = "assets/images/onboarding_images/onboarding-image-3.png";
+
   /// Dummy coffee assets
   static String bakery = "assets/images/dummy_assets/Bakery.png";
   static String customizeMug = "assets/images/dummy_assets/Customize mug.png";

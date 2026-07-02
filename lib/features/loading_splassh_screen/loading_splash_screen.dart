@@ -3,7 +3,7 @@ import 'package:coffee_shop_app/core/constants/app_colors.dart';
 import 'package:coffee_shop_app/shared/app_texts.dart';
 import 'package:flutter/material.dart';
 
-import '../onboarding_screen/onboarding_screen.dart';
+import '../onboarding_screen/views/onboarding_screen.dart';
 
 class LoadingSplashScreen extends StatefulWidget {
 
