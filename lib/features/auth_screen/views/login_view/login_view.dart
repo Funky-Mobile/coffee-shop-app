@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:coffee_shop_app/core/services/shared_preferences_service.dart';
 import 'package:coffee_shop_app/features/auth_screen/views/sign_up_view/sign_up_view.dart';
 import 'package:coffee_shop_app/features/loading_splassh_screen/loading_splash_screen.dart';
 import 'package:flutter/gestures.dart';
@@ -143,7 +144,7 @@ class _LoginViewState extends State<LoginView> {
                             children: [
                               Expanded(
                                 child: FilledButton(
-                                  onPressed: () {
+                                  onPressed: () async {
                                     ///Todo: Login User
                                     final String username = _usernameController.text;
                                     final String password = _passwordController.text;
@@ -151,9 +152,14 @@ class _LoginViewState extends State<LoginView> {
                                     log("Username: $username");
                                     log("Password: $password");
 
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
-                                      return LoadingSplashScreen(isSettingFaceID: false);
-                                    }));
+                                    ///Todo: Save the login state
+                                    await SharedPreferencesService.saveAuthState();
+
+                                    if (context.mounted) {
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
+                                        return LoadingSplashScreen(isSettingFaceID: false);
+                                      }));
+                                    }
                                   },
                                   style: FilledButton.styleFrom(
                                       backgroundColor: AppColors.espressoBrown,

@@ -9,6 +9,8 @@ import 'package:coffee_shop_app/shared/app_input_fields.dart';
 import 'package:coffee_shop_app/shared/app_texts.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/services/shared_preferences_service.dart';
+
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
 
@@ -128,7 +130,7 @@ class _SignUpViewState extends State<SignUpView> {
                             children: [
                               Expanded(
                                 child: FilledButton(
-                                  onPressed: () {
+                                  onPressed: () async {
                                     ///Todo: Register User
                                     final String username = _usernameController.text;
                                     final String emailOrPhone = _emailOrPhoneController.text;
@@ -138,9 +140,14 @@ class _SignUpViewState extends State<SignUpView> {
                                     log("Email or Phone: $emailOrPhone");
                                     log("Password: $password");
 
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
-                                      return FaceIdScreen();
-                                    }));
+                                    ///Todo: Save the login state
+                                    await SharedPreferencesService.saveAuthState();
+
+                                    if (context.mounted) {
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
+                                        return FaceIdScreen();
+                                      }));
+                                    }
                                   },
                                   style: FilledButton.styleFrom(
                                     backgroundColor: AppColors.espressoBrown,

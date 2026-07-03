@@ -27,4 +27,8 @@ class AppAssets {
   static String teaBags = "assets/images/dummy_assets/Tea Bags.png";
   static String treats = "assets/images/dummy_assets/Treats.png";
   static String wholeBeans = "assets/images/dummy_assets/Whole Beans.png";
+
+  static String userProfileAvatar = "assets/images/dummy_assets/user-profile-avatar.png";
+  static String coffeeBag = "assets/images/dummy_assets/coffee-bag.png";
+
 }

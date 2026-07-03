@@ -1,10 +1,13 @@
 import 'package:coffee_shop_app/core/constants/app_assets.dart';
 import 'package:coffee_shop_app/core/constants/app_colors.dart';
 import 'package:coffee_shop_app/features/landing_screen/models/food_model.dart';
+import 'package:coffee_shop_app/features/landing_screen/widgets/bonus_rewards_card_widget.dart';
 import 'package:coffee_shop_app/features/landing_screen/widgets/food_widget.dart';
 import 'package:coffee_shop_app/features/landing_screen/widgets/login_card_widget.dart';
 import 'package:coffee_shop_app/features/landing_screen/widgets/salutation_widget.dart';
 import 'package:flutter/material.dart';
+
+import '../../core/services/shared_preferences_service.dart';
 
 class LandingScreenMain extends StatefulWidget {
   const LandingScreenMain({super.key});
@@ -14,6 +17,8 @@ class LandingScreenMain extends StatefulWidget {
 }
 
 class _LandingScreenMainState extends State<LandingScreenMain> {
+
+  bool _isAuthenticated = false;
 
   final List<FoodModel> foodList = [
     FoodModel(
@@ -51,6 +56,18 @@ class _LandingScreenMainState extends State<LandingScreenMain> {
     ),
   ];
 
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final bool authState = await SharedPreferencesService.hasAuthenticated();
+
+      setState(() {
+        _isAuthenticated = authState;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,11 +81,15 @@ class _LandingScreenMainState extends State<LandingScreenMain> {
             children: [
               const SizedBox(height: 24.0),
 
-              SalutationWidget(),
+              SalutationWidget(showProfilePicture: _isAuthenticated),
 
               const SizedBox(height: 24.0),
 
-              LoginCardWidget(),
+              if (_isAuthenticated)...[
+                BonusRewardsCardWidget(),
+              ] else ...[
+                LoginCardWidget()
+              ],
 
               const SizedBox(height: 40.0),
 

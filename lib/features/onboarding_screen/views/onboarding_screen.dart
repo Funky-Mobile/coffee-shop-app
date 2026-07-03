@@ -99,20 +99,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
             FilledButton(
               onPressed: () {
-                switch(_currentIndex) {
-                  case 0:
-                    _animateToPage(1);
-                  break;
-
-                  case 1:
-                    _animateToPage(2);
-                  break;
-
-                  case 2:
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
-                      return const HomeScreenMain();
-                    }));
-                  break;
+                if (_currentIndex == 2) {
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (builder) {
+                    return const HomeScreenMain();
+                  }));
+                } else {
+                  _animateToPage(_currentIndex += 1);
                 }
               },
               style: FilledButton.styleFrom(
