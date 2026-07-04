@@ -1,5 +1,6 @@
 import 'package:coffee_shop_app/core/constants/app_assets.dart';
 import 'package:coffee_shop_app/features/landing_screen/landing_screen_main.dart';
+import 'package:coffee_shop_app/features/order_screen/views/order_screen_main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = [
     LandingScreenMain(),
     Text("Scan / Pay"),
-    Text("Order"),
+    OrderScreenMain(),
     Text("Account"),
     Text("Rewards")
   ];

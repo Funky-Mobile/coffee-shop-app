@@ -13,4 +13,5 @@ class AppColors {
   static Color moonlightMint = Color(0xEE3C7266);
   static Color charcoalFoam = Color(0xEE2E2A27);
   static Color lightGrey = Color(0xEE989898);
+  static Color primaryRed = Color(0xEEFF5151);
 }

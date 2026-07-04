@@ -1,25 +1,19 @@
-import 'package:coffee_shop_app/core/constants/app_assets.dart';
-import 'package:coffee_shop_app/core/constants/app_colors.dart';
-import 'package:coffee_shop_app/features/landing_screen/models/food_model.dart';
-import 'package:coffee_shop_app/features/landing_screen/widgets/bonus_rewards_card_widget.dart';
-import 'package:coffee_shop_app/features/landing_screen/widgets/favorites_card_widget.dart';
-import 'package:coffee_shop_app/features/landing_screen/widgets/food_widget.dart';
-import 'package:coffee_shop_app/features/landing_screen/widgets/login_card_widget.dart';
-import 'package:coffee_shop_app/features/landing_screen/widgets/salutation_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../core/services/shared_preferences_service.dart';
-import '../../shared/app_texts.dart';
+import '../../../core/constants/app_assets.dart';
+import '../../../core/services/shared_preferences_service.dart';
+import '../../landing_screen/models/food_model.dart';
+import '../../landing_screen/widgets/favorites_card_widget.dart';
+import '../../landing_screen/widgets/food_widget.dart';
 
-class LandingScreenMain extends StatefulWidget {
-  const LandingScreenMain({super.key});
+class OrderScreenMain extends StatefulWidget {
+  const OrderScreenMain({super.key});
 
   @override
-  State<LandingScreenMain> createState() => _LandingScreenMainState();
+  State<OrderScreenMain> createState() => _OrderScreenMainState();
 }
 
-class _LandingScreenMainState extends State<LandingScreenMain> {
+class _OrderScreenMainState extends State<OrderScreenMain> {
 
   bool _isAuthenticated = false;
 
@@ -75,31 +69,18 @@ class _LandingScreenMainState extends State<LandingScreenMain> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.frothyWhite,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 24.0),
-
-              SalutationWidget(showProfilePicture: _isAuthenticated),
-
-              const SizedBox(height: 24.0),
+              const SizedBox(height: 40.0),
 
               if (_isAuthenticated)...[
-                BonusRewardsCardWidget(),
+                FavoritesCardWidget(),
 
-                const SizedBox(height: 8.0),
-
-                FavoritesCardWidget()
-
-              ] else ...[
-                LoginCardWidget()
+                const SizedBox(height: 40.0),
               ],
-
-              const SizedBox(height: 40.0),
 
               Column(
                 children: List.generate(foodList.length, (index) {
