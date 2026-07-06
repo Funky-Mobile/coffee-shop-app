@@ -1,4 +1,6 @@
 import 'package:coffee_shop_app/core/constants/app_colors.dart';
+import 'package:coffee_shop_app/features/order_screen/widgets/customize_product_details_widget.dart';
+import 'package:coffee_shop_app/features/order_screen/widgets/product_details_widgets.dart';
 import 'package:coffee_shop_app/shared/app_texts.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +17,9 @@ class ProductDetailView extends StatefulWidget {
 }
 
 class _ProductDetailViewState extends State<ProductDetailView> {
+
+  final PageController _pageController = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,59 +44,14 @@ class _ProductDetailViewState extends State<ProductDetailView> {
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
-              child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppTexts.medium(
-                      text: "What's included",
-                      fontSize: 16.0,
-                      color: AppColors.black
-                    ),
-
-                    const SizedBox(height: 40.0),
-
-                    AppTexts.medium(
-                      text: "Cup Size",
-                      fontSize: 16.0,
-                      color: AppColors.black
-                    ),
-
-                    const SizedBox(height: 8.0),
-
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(8.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: AppColors.black.withValues(alpha: .15),
-                            blurRadius: 4.0
-                          )
-                        ]
-                      ),
-                      child: ListTile(
-                        leading: AppTexts.regular(
-                          text: "Large",
-                          fontSize: 16.0
-                        ),
-                        trailing: Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.espressoBrown,
-                            shape: BoxShape.circle
-                          ),
-                          child: Icon(
-                            Icons.keyboard_arrow_down,
-                            color: AppColors.frothyWhite,
-                            size: 16.0,
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                physics: const NeverScrollableScrollPhysics(),
+                children: [
+                  ProductDetailsWidgets(pageController: _pageController),
+                  CustomizeProductDetailsWidget(pageController: _pageController)
+                ],
               ),
             )
           ],
