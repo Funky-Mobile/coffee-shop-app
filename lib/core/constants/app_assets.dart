@@ -13,6 +13,17 @@ class AppAssets {
   static String onboardingImageTwo = "assets/images/onboarding_images/onboarding-image-2.png";
   static String onboardingImageThree = "assets/images/onboarding_images/onboarding-image-3.png";
 
+  /// Drawer Icons
+  static String drawerTileAccountIcon = "assets/icons/drawer-tile-account-icon.png";
+  static String drawerTilePrivacyIcon = "assets/icons/drawer-tile-privacy-icon.png";
+  static String drawerTileTransactionIcon = "assets/icons/drawer-tile-transaction-icon.png";
+
+  static String drawerTileForwardKeyboardIcon = "assets/icons/drawer-tile-forward-keyboard-icon.png";
+  static String drawerTileHelpIcon = "assets/icons/drawer-tile-help-icon.png";
+  static String drawerTileBookIcon = "assets/icons/drawer-tile-book-icon.png";
+  static String drawerTileLockIcon = "assets/icons/drawer-tile-lock-icon.png";
+
+
   /// Dummy coffee assets
   static String bakery = "assets/images/dummy_assets/Bakery.png";
   static String customizeMug = "assets/images/dummy_assets/Customize mug.png";

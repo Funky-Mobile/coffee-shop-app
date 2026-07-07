@@ -16,4 +16,5 @@ class AppColors {
   static Color primaryRed = Color(0xEEFF5151);
 
   static Color primaryLight = Color(0xEED9D9D9);
+  static Color primaryGreen = Color(0xEE34C759);
 }

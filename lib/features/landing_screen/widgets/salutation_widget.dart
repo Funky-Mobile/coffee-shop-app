@@ -5,9 +5,13 @@ import 'package:flutter/cupertino.dart';
 
 class SalutationWidget extends StatelessWidget {
 
+  final String title;
+  final String subtitle;
+  final double? titleFontSize;
+
   final bool showProfilePicture;
 
-  const SalutationWidget({super.key, required this.showProfilePicture});
+  const SalutationWidget({super.key, required this.showProfilePicture, required this.title, required this.subtitle, this.titleFontSize});
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +21,13 @@ class SalutationWidget extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            AppTexts.bold(text: AppStrings.salutation),
-            AppTexts.regular(text: AppStrings.loginAndForFreeTea)
+            AppTexts.bold(
+              text: title,
+              fontSize: titleFontSize ?? 20.0
+            ),
+            AppTexts.regular(
+              text: subtitle
+            )
           ],
         ),
 

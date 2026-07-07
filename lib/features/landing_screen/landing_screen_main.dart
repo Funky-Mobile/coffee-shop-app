@@ -9,6 +9,7 @@ import 'package:coffee_shop_app/features/landing_screen/widgets/salutation_widge
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../core/constants/app_strings.dart';
 import '../../core/services/shared_preferences_service.dart';
 import '../../shared/app_texts.dart';
 
@@ -84,7 +85,11 @@ class _LandingScreenMainState extends State<LandingScreenMain> {
             children: [
               const SizedBox(height: 24.0),
 
-              SalutationWidget(showProfilePicture: _isAuthenticated),
+              SalutationWidget(
+                title: AppStrings.salutation,
+                subtitle: AppStrings.loginAndForFreeTea,
+                showProfilePicture: _isAuthenticated
+              ),
 
               const SizedBox(height: 24.0),
 
